@@ -6,7 +6,7 @@ export const state = () => {
 
 export const mutations = {
     SET_CATEGORIES_PARENTS(state, data) {
-        state.categoriesParent = data.data;
+        state.categoriesParent = data;
     },
 };
 
