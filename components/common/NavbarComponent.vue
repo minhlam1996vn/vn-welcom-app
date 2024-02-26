@@ -9,70 +9,18 @@
           <font-awesome-icon :icon="['fas', 'house']" />
         </nuxt-link>
         <!-- Nav -->
-        <div class="ms-auto">
+        <div class="ms-2 nav__link">
           <ul class="d-flex m-0 p-0">
-            <li class="text-nowrap">
+            <li
+              class="text-nowrap"
+              v-for="category in categoriesParent"
+              :key="category.id"
+            >
               <nuxt-link
-                class="p-3 text-white text-decoration-none custom__fw-5"
-                to="/"
+                class="py-1 px-3 text-white text-decoration-none custom__fw-5"
+                :to="category.category_slug"
               >
-                Trang chủ
-              </nuxt-link>
-            </li>
-            <li class="text-nowrap">
-              <nuxt-link
-                class="p-3 text-white text-decoration-none custom__fw-5"
-                to="/con-nguoi-viet-nam"
-              >
-                Con người Việt Nam
-              </nuxt-link>
-            </li>
-            <li class="text-nowrap">
-              <nuxt-link
-                class="p-3 text-white text-decoration-none custom__fw-5"
-                to="/ngay-le-va-nhung-trai-nghiem"
-              >
-                Ngày lễ và những trải nghiệm
-              </nuxt-link>
-            </li>
-            <li class="text-nowrap">
-              <nuxt-link
-                class="p-3 text-white text-decoration-none custom__fw-5"
-                to="/tin-tuc-thi-truong"
-              >
-                Tin tức thị trường
-              </nuxt-link>
-            </li>
-            <li class="text-nowrap">
-              <nuxt-link
-                class="p-3 text-white text-decoration-none custom__fw-5"
-                to="/63-tinh-thanh"
-              >
-                63 Tỉnh thành
-              </nuxt-link>
-            </li>
-            <li class="text-nowrap">
-              <nuxt-link
-                class="p-3 text-white text-decoration-none custom__fw-5"
-                to="/am-thuc-du-lich"
-              >
-                Ẩm thực - Du lịch
-              </nuxt-link>
-            </li>
-            <li class="text-nowrap">
-              <nuxt-link
-                class="p-3 text-white text-decoration-none custom__fw-5"
-                to="/blog"
-              >
-                Blog
-              </nuxt-link>
-            </li>
-            <li class="text-nowrap">
-              <nuxt-link
-                class="p-3 text-white text-decoration-none custom__fw-5"
-                to="/am-thanh-hinh-anh"
-              >
-                Âm thanh - Hình ảnh
+                {{ category.category_name }}
               </nuxt-link>
             </li>
           </ul>
@@ -83,8 +31,14 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
-  //
+  computed: {
+    ...mapGetters({
+      categoriesParent: "category/getCategoriesParent",
+    }),
+  },
 };
 </script>
 

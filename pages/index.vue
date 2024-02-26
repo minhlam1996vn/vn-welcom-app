@@ -378,5 +378,8 @@ export default {
     PostCardHeaderNav,
     BannerInfo,
   },
+  async asyncData({ params, store }) {
+    await store.dispatch("category/getListCategoriesParent");
+  },
 };
 </script>
