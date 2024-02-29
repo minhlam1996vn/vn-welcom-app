@@ -103,8 +103,8 @@ export default {
   },
   props: {
     categoryInfo: {
-      type: Array,
-      default: [],
+      type: Object,
+      default: {},
     },
   },
 };
