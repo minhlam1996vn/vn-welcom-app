@@ -1,8 +1,11 @@
 <template>
   <ul class="ps-0 mb-0">
     <li
-      class="pb-4 mb-4"
-      :class="{ 'border-bottom': index !== articlesNew.length - 1 }"
+      class="pb-4"
+      :class="{
+        'border-bottom': index !== articlesNew.length - 1,
+        'mb-4': index !== articlesNew.length - 1,
+      }"
       v-for="(article, index) in articlesNew"
       :key="article.id"
     >
@@ -40,6 +43,7 @@
         </div>
       </div>
     </li>
+    <li class="d-sm-none border-bottom"></li>
   </ul>
 </template>
 

@@ -29,11 +29,11 @@
     </section>
 
     <!-- Category 1 -->
-    <!-- <section>
-      <div class="container py-4 py-md-5 border-bottom">
-        <SectionCategoryFirst />
+    <section>
+      <div class="container pb-4 border-bottom">
+        <SectionCategoryFirst :category-info="categoriesPopular[0]" />
       </div>
-    </section> -->
+    </section>
 
     <!-- Category 2 -->
     <!-- <section>
@@ -68,6 +68,7 @@ export default {
       articlesCover: "article/getArticlesCover",
       articlesThree: "article/getArticlesThree",
       articlesNew: "article/getArticlesNew",
+      categoriesPopular: "category/getCategoriesPopular",
     }),
   },
   async asyncData({ params, store }) {

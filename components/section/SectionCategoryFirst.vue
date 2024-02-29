@@ -1,27 +1,75 @@
 <template>
   <div>
-    <PostCardHeaderNav class="mb-4 mb-md-5" />
-    <b-row class="mb-4">
-      <b-col cols="12" md="8" class="mb-md-0 mb-4">
-        <PostInfo
-          :post="{
-            image:
-              'https://images.unsplash.com/photo-1682687220336-bbd659a734e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2150&q=80',
-            title:
-              'FPT 13 Under 35 rong ruổi sa mạc cát đen, ngắm núi lửa Bromo',
-            description:
-              'Với việc tiêm vaccine cúm mùa, người FPT sẽ giảm nhiều nỗi lo mắc bệnh, đồng thời tránh việc lây nhiễm cho người thân, đặc biệt trẻ nhỏ trong thời',
-            categoryName: 'Công Nghệ',
-          }"
-        />
-      </b-col>
-      <b-col cols="12" md="4">
+    <div class="mb-4">
+      <div class="d-flex gap-4 align-items-center">
+        <h2 class="fw-bold mb-0 text-nowrap">
+          <font-awesome-icon :icon="['fas', 'box']" />
+          <a href="#!" class="text-decoration-none text-dark">
+            {{ categoryInfo.category_name }}
+          </a>
+        </h2>
+        <nav
+          v-if="categoryInfo.categoriesChild.length !== 0"
+          class="d-none d-sm-block overflow-x-auto overflow-y-hidden"
+        >
+          <ul class="d-flex gap-3 align-items-center h5 ps-0 mb-0 custom__fw-5">
+            <li class="text-nowrap">
+              <a href="#!" class="text-decoration-none text-muted">
+                Made by FPT
+              </a>
+            </li>
+            <li class="text-nowrap">
+              <a href="#!" class="text-decoration-none text-muted">
+                Chuyển đổi số
+              </a>
+            </li>
+            <li class="text-nowrap">
+              <a href="#!" class="text-decoration-none text-muted">
+                Công nghệ
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12 col-md-8 mb-md-0 mb-4">
+        <div>
+          <nuxt-link
+            class="d-block ratio ratio-16x9 overflow-hidden mb-3 rounded-3 shadow-lg"
+            :to="`/${categoryInfo.category_slug}/${categoryInfo.articles[0].article_slug}.html`"
+          >
+            <img
+              class="w-100 object-fit-cover"
+              :src="categoryInfo.articles[0].article_thumbnail"
+              :alt="categoryInfo.articles[0].article_title"
+            />
+          </nuxt-link>
+          <h3 class="h5">
+            <nuxt-link
+              class="text-line-clamp-2 text-dark text-decoration-none text-hover"
+              :to="`/${categoryInfo.category_slug}/${categoryInfo.articles[0].article_slug}.html`"
+            >
+              {{ categoryInfo.articles[0].article_title }}
+            </nuxt-link>
+          </h3>
+          <p class="text-line-clamp-2">
+            {{ categoryInfo.articles[0].article_description }}
+          </p>
+          <nuxt-link
+            class="d-block mb-3 text-muted text-decoration-none"
+            :to="`/${categoryInfo.category_slug}`"
+          >
+            {{ categoryInfo.category_name }}
+          </nuxt-link>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
         <ul class="ps-0">
           <li>
             <PostInfo
               :post="{
-                image:
-                  'https://images.unsplash.com/photo-1696197017974-e9bf6319eb54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+                image: 'https://placehold.jp/1280x720.png',
                 title:
                   'Phạm Việt Tùng Vô địch giải đấu eSports nhà Phần mềm FPT trong đêm chung kết rực lửa',
                 categoryName: 'Người FPT',
@@ -31,8 +79,7 @@
           <li>
             <PostInfo
               :post="{
-                image:
-                  'https://images.unsplash.com/photo-1682685797769-481b48222adf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+                image: 'https://placehold.jp/1280x720.png',
                 title:
                   'Trung tâm dữ liệu FPT Fornix HCM01 đón chào diện mạo mới',
                 categoryName: 'Công Nghệ',
@@ -40,19 +87,25 @@
             />
           </li>
         </ul>
-      </b-col>
-    </b-row>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import PostCardHeaderNav from "@/components/posts/PostCardHeaderNav.vue";
-import PostInfo from "@/components/posts/PostInfo.vue";
+import PostCardHeaderNav from "../posts/PostCardHeaderNav.vue";
+import PostInfo from "../posts/PostInfo.vue";
 
 export default {
   components: {
     PostCardHeaderNav,
     PostInfo,
+  },
+  props: {
+    categoryInfo: {
+      type: Array,
+      default: [],
+    },
   },
 };
 </script>
