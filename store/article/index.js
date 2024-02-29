@@ -19,10 +19,13 @@ export const getters = {
         return state.articlesPopular;
     },
     getArticlesNew(state) {
-        return state.articlesNew;
+        return state.articlesNew.slice(8, state.articlesNew.length);
     },
     getArticlesCover(state) {
         return state.articlesNew.slice(0, 5);
+    },
+    getArticlesThree(state) {
+        return state.articlesNew.slice(5, 8);
     }
 };
 

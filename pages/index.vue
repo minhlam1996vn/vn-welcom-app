@@ -1,28 +1,32 @@
 <template>
   <section>
     <!-- section-feature -->
-    <section>
+    <section class="pt-sm-4">
       <SectionCover :articles-cover="articlesCover" />
-      <div class="container pt-1">
-        <SectionThreeRow />
+      <div class="container">
+        <SectionThreeRow :articles-three="articlesThree" />
+        <div class="d-none d-sm-block border-bottom"></div>
       </div>
     </section>
 
     <!-- section article -->
-    <!-- <section>
-      <div class="container py-4 py-md-5 border-bottom">
-        <b-row>
-          <b-col cols="12" md="9">
-            <SectionColumn />
-          </b-col>
-          <b-col cols="12" md="3" class="mt-md-0 mt-4">
+    <section>
+      <div class="container py-4">
+        <div class="row">
+          <div class="col-12 col-md-9">
+            <SectionColumn :articles-new="articlesNew" />
+          </div>
+          <div class="d-none d-sm-block col-12 col-md-3 mt-md-0 mt-4">
             <aside class="position-sticky z-1 custom__top-5">
               <SectionBanner />
             </aside>
-          </b-col>
-        </b-row>
+          </div>
+        </div>
       </div>
-    </section> -->
+      <div class="d-none d-sm-block container pb-4">
+        <div class="border-bottom"></div>
+      </div>
+    </section>
 
     <!-- Category 1 -->
     <!-- <section>
@@ -62,6 +66,8 @@ export default {
   computed: {
     ...mapGetters({
       articlesCover: "article/getArticlesCover",
+      articlesThree: "article/getArticlesThree",
+      articlesNew: "article/getArticlesNew",
     }),
   },
   async asyncData({ params, store }) {

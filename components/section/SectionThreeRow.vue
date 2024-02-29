@@ -1,45 +1,52 @@
 <template>
   <ul class="row mb-0 p-0">
-    <li class="col-md col-12">
-      <PostInfo
-        :post="{
-          image:
-            'https://images.unsplash.com/photo-1696197017974-e9bf6319eb54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-          title:
-            'Phạm Việt Tùng Vô địch giải đấu eSports nhà Phần mềm FPT trong đêm chung kết rực lửa',
-          categoryName: 'Người FPT',
-        }"
-      />
-    </li>
-    <li class="col-md col-12">
-      <PostInfo
-        :post="{
-          image:
-            'https://images.unsplash.com/photo-1682685797769-481b48222adf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-          title: 'Trung tâm dữ liệu FPT Fornix HCM01 đón chào diện mạo mới',
-          categoryName: 'Công Nghệ',
-        }"
-      />
-    </li>
-    <li class="col-md col-12">
-      <PostInfo
-        :post="{
-          image:
-            'https://images.unsplash.com/photo-1682687982049-b3d433368cd1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80',
-          title: `FPT Play lên sóng 'Gieo gì gặt nấy' song song Hàn Quốc`,
-          categoryName: 'Văn Hóa',
-        }"
-      />
+    <li
+      class="col-md col-12 mb-sm-0"
+      :class="{ 'mb-4': index !== 2 }"
+      v-for="(article, index) in articlesThree"
+      :key="article.id"
+    >
+      <div>
+        <nuxt-link
+          class="d-block ratio ratio-16x9 overflow-hidden mb-3 rounded-3 shadow-lg"
+          :to="`/${article.category.category_slug}/${article.article_slug}.html`"
+        >
+          <img
+            class="w-100 object-fit-cover"
+            :src="article.article_thumbnail"
+            :alt="article.article_title"
+          />
+        </nuxt-link>
+        <h3 class="h5">
+          <nuxt-link
+            class="text-line-clamp-2 text-dark text-decoration-none text-hover"
+            :to="`/${article.category.category_slug}/${article.article_slug}.html`"
+          >
+            {{ article.article_title }}
+          </nuxt-link>
+        </h3>
+        <p class="d-sm-none text-line-clamp-2">
+          {{ article.article_description }}
+        </p>
+        <nuxt-link
+          class="d-block mb-3 text-muted text-decoration-none"
+          :to="`/${article.category.category_slug}`"
+        >
+          {{ article.category.category_name }}
+        </nuxt-link>
+        <div class="d-sm-none border-bottom"></div>
+      </div>
     </li>
   </ul>
 </template>
 
 <script>
-import PostInfo from "@/components/posts/PostInfo.vue";
-
 export default {
-  components: {
-    PostInfo,
+  props: {
+    articlesThree: {
+      type: Array,
+      default: [],
+    },
   },
 };
 </script>
