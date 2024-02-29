@@ -30,8 +30,11 @@
 
     <!-- Category 1 -->
     <section>
-      <div class="container pb-4 border-bottom">
+      <div class="container">
         <SectionCategoryFirst :category-info="categoriesPopular[0]" />
+      </div>
+      <div class="d-none d-sm-block container pb-4">
+        <div class="border-bottom"></div>
       </div>
     </section>
 

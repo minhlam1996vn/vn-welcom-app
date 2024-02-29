@@ -32,7 +32,7 @@
         </nav>
       </div>
     </div>
-    <div class="row mb-4">
+    <div class="row">
       <div class="col-12 col-md-8 mb-md-0 mb-4">
         <div>
           <nuxt-link
@@ -63,28 +63,45 @@
             {{ categoryInfo.category_name }}
           </nuxt-link>
         </div>
+        <div class="border-bottom d-block d-sm-none"></div>
       </div>
       <div class="col-12 col-md-4">
         <ul class="ps-0">
-          <li>
-            <PostInfo
-              :post="{
-                image: 'https://placehold.jp/1280x720.png',
-                title:
-                  'Phạm Việt Tùng Vô địch giải đấu eSports nhà Phần mềm FPT trong đêm chung kết rực lửa',
-                categoryName: 'Người FPT',
-              }"
-            />
-          </li>
-          <li>
-            <PostInfo
-              :post="{
-                image: 'https://placehold.jp/1280x720.png',
-                title:
-                  'Trung tâm dữ liệu FPT Fornix HCM01 đón chào diện mạo mới',
-                categoryName: 'Công Nghệ',
-              }"
-            />
+          <li
+            class="mb-4"
+            :class="{ 'border-bottom': index !== 1 }"
+            v-for="(article, index) in categoryInfo.articles.slice(1, 3)"
+            :key="article.id"
+          >
+            <div>
+              <nuxt-link
+                class="d-block ratio ratio-16x9 overflow-hidden mb-3 rounded-3 shadow-lg"
+                :to="`/${article.article_slug}.html`"
+              >
+                <img
+                  class="w-100 object-fit-cover"
+                  :src="article.article_thumbnail"
+                  :alt="article.article_title"
+                />
+              </nuxt-link>
+              <h3 class="h5">
+                <nuxt-link
+                  class="text-line-clamp-2 text-dark text-decoration-none text-hover"
+                  :to="`/${article.article_slug}.html`"
+                >
+                  {{ article.article_title }}
+                </nuxt-link>
+              </h3>
+              <p class="text-line-clamp-2 d-block d-sm-none">
+                {{ article.article_description }}
+              </p>
+              <nuxt-link
+                class="d-block mb-3 text-muted text-decoration-none"
+                :to="`/${article.article_slug}.html`"
+              >
+                {{ categoryInfo.category_name }}
+              </nuxt-link>
+            </div>
           </li>
         </ul>
       </div>
