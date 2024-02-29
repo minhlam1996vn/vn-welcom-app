@@ -39,11 +39,11 @@
     </section>
 
     <!-- Category 2 -->
-    <!-- <section>
-      <div class="container py-4 py-md-5">
-        <SectionCategorySecond />
+    <section>
+      <div class="container">
+        <SectionCategorySecond :category-info="categoriesPopular[1]" />
       </div>
-    </section> -->
+    </section>
   </section>
 </template>
 

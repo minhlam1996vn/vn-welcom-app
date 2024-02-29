@@ -1,7 +1,7 @@
 <template>
   <div>
     <BannerInfo image="https://placehold.jp/1280x720.png" />
-    <BannerInfo image="https://placehold.jp/720x1280.png" />
+    <BannerInfo image="https://placehold.jp/720x1024.png" />
   </div>
 </template>
 

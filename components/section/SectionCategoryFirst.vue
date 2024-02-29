@@ -110,14 +110,7 @@
 </template>
 
 <script>
-import PostCardHeaderNav from "../posts/PostCardHeaderNav.vue";
-import PostInfo from "../posts/PostInfo.vue";
-
 export default {
-  components: {
-    PostCardHeaderNav,
-    PostInfo,
-  },
   props: {
     categoryInfo: {
       type: Object,

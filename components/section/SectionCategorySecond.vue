@@ -1,98 +1,286 @@
 <template>
   <div>
-    <PostCardHeaderNav class="mb-4 mb-md-5" />
-    <b-row class="mb-4">
-      <b-col cols="12" md class="mb-md-0 mb-4">
-        <PostCover />
-      </b-col>
-      <b-col cols="12" md class="mb-md-0 mb-4">
+    <div class="mb-4">
+      <div class="d-flex gap-4 align-items-center">
+        <h2 class="fw-bold mb-0 text-nowrap">
+          <font-awesome-icon :icon="['fas', 'box']" />
+          <a href="#!" class="text-decoration-none text-dark">
+            {{ categoryInfo.category_name }}
+          </a>
+        </h2>
+        <nav
+          v-if="categoryInfo.categoriesChild.length !== 0"
+          class="d-none d-sm-block overflow-x-auto overflow-y-hidden"
+        >
+          <ul class="d-flex gap-3 align-items-center h5 ps-0 mb-0 custom__fw-5">
+            <li class="text-nowrap">
+              <a href="#!" class="text-decoration-none text-muted">
+                Made by FPT
+              </a>
+            </li>
+            <li class="text-nowrap">
+              <a href="#!" class="text-decoration-none text-muted">
+                Chuyển đổi số
+              </a>
+            </li>
+            <li class="text-nowrap">
+              <a href="#!" class="text-decoration-none text-muted">
+                Công nghệ
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12 col-md mb-md-0 mb-4 d-none d-sm-block">
+        <div
+          class="h-100 bg-secondary position-relative rounded-3 overflow-hidden shadow-lg"
+        >
+          <img
+            class="w-100 h-100 rounded position-absolute object-fit-cover"
+            :src="categoryInfo.articles[0].article_thumbnail"
+            :alt="categoryInfo.articles[0].article_title"
+          />
+          <div class="p-3 p-md-4 z-3 position-absolute bottom-0">
+            <h2>
+              <nuxt-link
+                class="text-line-clamp-2 shadow-lg text-light text-decoration-none fw-bold text-hover"
+                :to="`/${categoryInfo.category_slug}/${categoryInfo.articles[0].article_slug}.html`"
+              >
+                {{ categoryInfo.articles[0].article_title }}
+              </nuxt-link>
+            </h2>
+            <nuxt-link
+              class="shadow-lg text-light text-decoration-none fw-bold"
+              :to="`/${categoryInfo.category_slug}`"
+            >
+              {{ categoryInfo.category_name }}
+            </nuxt-link>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md mb-md-0 mb-4">
         <ul class="ps-0 mb-0">
-          <li class="">
-            <PostInfo
-              :post="{
-                image:
-                  'https://images.unsplash.com/photo-1682687982049-b3d433368cd1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80',
-                title: `FPT Play lên sóng 'Gieo gì gặt nấy' song song Hàn Quốc`,
-                categoryName: 'Văn Hóa',
-              }"
-            />
+          <li class="mb-4">
+            <div class="border-bottom">
+              <nuxt-link
+                class="d-block ratio ratio-16x9 overflow-hidden mb-3 rounded-3 shadow-lg"
+                :to="`/${categoryInfo.articles[1].article_slug}.html`"
+              >
+                <img
+                  class="w-100 object-fit-cover"
+                  :src="categoryInfo.articles[1].article_thumbnail"
+                  :alt="categoryInfo.articles[1].article_title"
+                />
+              </nuxt-link>
+              <h3 class="h5">
+                <nuxt-link
+                  class="text-line-clamp-2 text-dark text-decoration-none text-hover"
+                  :to="`/${categoryInfo.articles[1].article_slug}.html`"
+                >
+                  {{ categoryInfo.articles[1].article_title }}
+                </nuxt-link>
+              </h3>
+              <nuxt-link
+                class="d-block mb-3 text-muted text-decoration-none"
+                :to="`/${categoryInfo.category_slug}`"
+              >
+                {{ categoryInfo.category_name }}
+              </nuxt-link>
+            </div>
           </li>
-          <li class="pb-4">
-            <PostInfoRow
-              :post="{
-                image:
-                  'https://images.unsplash.com/photo-1682687220431-81a76ec65505?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-                title:
-                  'FPT IS khởi động dự án quản trị nguồn lực cho Tổng công ty Thiết bị điện Đông Anh',
-                categoryName: 'Công Nghệ',
-              }"
-            />
+          <li class="mb-4">
+            <div class="row">
+              <div class="col-6 col-md-4 pe-0 pe-md-2 mb-3">
+                <nuxt-link
+                  class="d-block ratio ratio-16x9 overflow-hidden rounded-3 shadow-lg"
+                  :to="`/${categoryInfo.articles[2].article_slug}.html`"
+                >
+                  <img
+                    class="w-100 object-fit-cover"
+                    :src="categoryInfo.articles[2].article_thumbnail"
+                    :alt="categoryInfo.articles[2].article_title"
+                  />
+                </nuxt-link>
+              </div>
+              <div class="col-6 col-md-8">
+                <h3 class="h5">
+                  <nuxt-link
+                    class="text-line-clamp-2 text-dark text-decoration-none text-hover"
+                    :to="`/${categoryInfo.articles[2].article_slug}.html`"
+                  >
+                    {{ categoryInfo.articles[2].article_title }}
+                  </nuxt-link>
+                </h3>
+                <!-- <p v-if="post.description" class="text-line-clamp-2">
+                  {{ post.description }}
+                </p> -->
+                <nuxt-link
+                  class="d-block mb-3 text-muted text-decoration-none"
+                  :to="`/${categoryInfo.category_slug}`"
+                >
+                  {{ categoryInfo.category_name }}
+                </nuxt-link>
+              </div>
+              <div class="col-12">
+                <div class="border-bottom"></div>
+              </div>
+            </div>
           </li>
           <li class="">
-            <PostInfoRow
-              :post="{
-                image:
-                  'https://images.unsplash.com/photo-1682685797828-d3b2561deef4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-                title:
-                  'FPT bắt tay Thiên Việt ứng dụng công nghệ lõi vào hoạt động chứng khoán',
-                categoryName: 'Người FPT',
-              }"
-            />
+            <div class="row">
+              <div class="col-6 col-md-4 pe-0 pe-md-2 mb-3">
+                <nuxt-link
+                  class="d-block ratio ratio-16x9 overflow-hidden rounded-3 shadow-lg"
+                  :to="`/${categoryInfo.articles[3].article_slug}.html`"
+                >
+                  <img
+                    class="w-100 object-fit-cover"
+                    :src="categoryInfo.articles[3].article_thumbnail"
+                    :alt="categoryInfo.articles[3].article_title"
+                  />
+                </nuxt-link>
+              </div>
+              <div class="col-6 col-md-8">
+                <h3 class="h5">
+                  <nuxt-link
+                    class="text-line-clamp-2 text-dark text-decoration-none text-hover"
+                    :to="`/${categoryInfo.articles[3].article_slug}.html`"
+                  >
+                    {{ categoryInfo.articles[3].article_title }}
+                  </nuxt-link>
+                </h3>
+                <nuxt-link
+                  class="d-block mb-3 text-muted text-decoration-none"
+                  :to="`/${categoryInfo.category_slug}`"
+                >
+                  {{ categoryInfo.category_name }}
+                </nuxt-link>
+              </div>
+              <div class="d-block d-sm-none col-12">
+                <div class="border-bottom"></div>
+              </div>
+            </div>
           </li>
         </ul>
-      </b-col>
-      <b-col cols="12" md>
+      </div>
+      <div class="col-12 col-md">
         <ul class="ps-0 mb-0">
-          <li class="">
-            <PostInfo
-              :post="{
-                image:
-                  'https://images.unsplash.com/photo-1682686578615-39549501dd08?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-                title: `FPT Play lên sóng 'Gieo gì gặt nấy' song song Hàn Quốc`,
-                categoryName: 'Văn Hóa',
-              }"
-            />
+          <li class="mb-4">
+            <div class="border-bottom">
+              <nuxt-link
+                class="d-block ratio ratio-16x9 overflow-hidden mb-3 rounded-3 shadow-lg"
+                :to="`/${categoryInfo.articles[4].article_slug}.html`"
+              >
+                <img
+                  class="w-100 object-fit-cover"
+                  :src="categoryInfo.articles[4].article_thumbnail"
+                  :alt="categoryInfo.articles[4].article_title"
+                />
+              </nuxt-link>
+              <h3 class="h5">
+                <nuxt-link
+                  class="text-line-clamp-2 text-dark text-decoration-none text-hover"
+                  :to="`/${categoryInfo.articles[4].article_slug}.html`"
+                >
+                  {{ categoryInfo.articles[4].article_title }}
+                </nuxt-link>
+              </h3>
+              <nuxt-link
+                class="d-block mb-3 text-muted text-decoration-none"
+                :to="`/${categoryInfo.category_slug}`"
+              >
+                {{ categoryInfo.category_name }}
+              </nuxt-link>
+            </div>
           </li>
-          <li class="pb-4">
-            <PostInfoRow
-              :post="{
-                image:
-                  'https://images.unsplash.com/photo-1696231951105-02208e8bafad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-                title:
-                  'FPT IS khởi động dự án quản trị nguồn lực cho Tổng công ty Thiết bị điện Đông Anh',
-                categoryName: 'Công Nghệ',
-              }"
-            />
+          <li class="mb-4">
+            <div class="row">
+              <div class="col-6 col-md-4 pe-0 pe-md-2 mb-3">
+                <nuxt-link
+                  class="d-block ratio ratio-16x9 overflow-hidden rounded-3 shadow-lg"
+                  :to="`/${categoryInfo.articles[2].article_slug}.html`"
+                >
+                  <img
+                    class="w-100 object-fit-cover"
+                    :src="categoryInfo.articles[2].article_thumbnail"
+                    :alt="categoryInfo.articles[2].article_title"
+                  />
+                </nuxt-link>
+              </div>
+              <div class="col-6 col-md-8">
+                <h3 class="h5">
+                  <nuxt-link
+                    class="text-line-clamp-2 text-dark text-decoration-none text-hover"
+                    :to="`/${categoryInfo.articles[2].article_slug}.html`"
+                  >
+                    {{ categoryInfo.articles[2].article_title }}
+                  </nuxt-link>
+                </h3>
+                <!-- <p v-if="post.description" class="text-line-clamp-2">
+                  {{ post.description }}
+                </p> -->
+                <nuxt-link
+                  class="d-block mb-3 text-muted text-decoration-none"
+                  :to="`/${categoryInfo.category_slug}`"
+                >
+                  {{ categoryInfo.category_name }}
+                </nuxt-link>
+              </div>
+              <div class="col-12">
+                <div class="border-bottom"></div>
+              </div>
+            </div>
           </li>
           <li class="">
-            <PostInfoRow
-              :post="{
-                image:
-                  'https://images.unsplash.com/photo-1682686580003-22d3d65399a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2231&q=80',
-                title:
-                  'FPT bắt tay Thiên Việt ứng dụng công nghệ lõi vào hoạt động chứng khoán',
-                categoryName: 'Người FPT',
-              }"
-            />
+            <div class="row">
+              <div class="col-6 col-md-4 pe-0 pe-md-2 mb-3">
+                <nuxt-link
+                  class="d-block ratio ratio-16x9 overflow-hidden rounded-3 shadow-lg"
+                  :to="`/${categoryInfo.articles[3].article_slug}.html`"
+                >
+                  <img
+                    class="w-100 object-fit-cover"
+                    :src="categoryInfo.articles[3].article_thumbnail"
+                    :alt="categoryInfo.articles[3].article_title"
+                  />
+                </nuxt-link>
+              </div>
+              <div class="col-6 col-md-8">
+                <h3 class="h5">
+                  <nuxt-link
+                    class="text-line-clamp-2 text-dark text-decoration-none text-hover"
+                    :to="`/${categoryInfo.articles[3].article_slug}.html`"
+                  >
+                    {{ categoryInfo.articles[3].article_title }}
+                  </nuxt-link>
+                </h3>
+                <nuxt-link
+                  class="d-block mb-3 text-muted text-decoration-none"
+                  :to="`/${categoryInfo.category_slug}`"
+                >
+                  {{ categoryInfo.category_name }}
+                </nuxt-link>
+              </div>
+              <div class="d-block d-sm-none col-12">
+                <div class="border-bottom"></div>
+              </div>
+            </div>
           </li>
         </ul>
-      </b-col>
-    </b-row>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import PostCardHeaderNav from "@/components/posts/PostCardHeaderNav.vue";
-import PostCover from "@/components/posts/PostCover.vue";
-import PostInfo from "@/components/posts/PostInfo.vue";
-import PostInfoRow from "@/components/posts/PostInfoRow.vue";
-
 export default {
-  components: {
-    PostCardHeaderNav,
-    PostCover,
-    PostInfo,
-    PostInfoRow,
+  props: {
+    categoryInfo: {
+      type: Object,
+      default: {},
+    },
   },
 };
 </script>
