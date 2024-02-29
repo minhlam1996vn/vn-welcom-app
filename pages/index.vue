@@ -2,16 +2,14 @@
   <section>
     <!-- section-feature -->
     <section>
-      <div class="container py-3 py-sm-5 border-bottom">
-        <SectionCover />
-        <div class="pt-1">
-          <SectionThreeRow />
-        </div>
+      <SectionCover :articles-cover="articlesCover" />
+      <div class="container pt-1">
+        <SectionThreeRow />
       </div>
     </section>
 
     <!-- section article -->
-    <section>
+    <!-- <section>
       <div class="container py-4 py-md-5 border-bottom">
         <b-row>
           <b-col cols="12" md="9">
@@ -24,25 +22,27 @@
           </b-col>
         </b-row>
       </div>
-    </section>
+    </section> -->
 
     <!-- Category 1 -->
-    <section>
+    <!-- <section>
       <div class="container py-4 py-md-5 border-bottom">
         <SectionCategoryFirst />
       </div>
-    </section>
+    </section> -->
 
     <!-- Category 2 -->
-    <section>
+    <!-- <section>
       <div class="container py-4 py-md-5">
         <SectionCategorySecond />
       </div>
-    </section>
+    </section> -->
   </section>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 import SectionCover from "../components/section/SectionCover.vue";
 import SectionThreeRow from "../components/section/SectionThreeRow.vue";
 import SectionColumn from "../components/section/SectionColumn.vue";
@@ -58,6 +58,11 @@ export default {
     SectionBanner,
     SectionCategoryFirst,
     SectionCategorySecond,
+  },
+  computed: {
+    ...mapGetters({
+      articlesCover: "article/getArticlesCover",
+    }),
   },
   async asyncData({ params, store }) {
     await Promise.all([

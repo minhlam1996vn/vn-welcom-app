@@ -1,57 +1,155 @@
 <template>
-  <b-row class="mb-4">
-    <b-col cols="12" md="8" class="mb-md-0 mb-4">
-      <div
-        class="h-100 bg-secondary position-relative rounded-3 overflow-hidden shadow-lg image__cover"
-      >
-        <img
-          class="w-100 h-100 rounded position-absolute object-fit-cover"
-          src="https://images.unsplash.com/photo-1696943444991-def9485f89f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-          alt=""
-        />
-        <div class="p-3 p-md-4 z-3 position-absolute bottom-0">
-          <h2>
-            <a
-              href="#!"
-              class="text-line-clamp-2 shadow-lg text-light text-decoration-none fw-bold text-hover"
-            >
-              Phạm Việt Tùng Vô địch giải đấu eSports nhà Phần mềm FPT trong đêm
-              chung kết rực lửa
-            </a>
-          </h2>
-          <a
-            href="#!"
-            class="shadow-lg text-light text-decoration-none fw-bold"
+  <div>
+    <!-- Display on PC -->
+    <div class="d-none d-sm-block container pt-5">
+      <div class="row mb-4">
+        <div class="col-12 col-md-8 mb-md-0 mb-4">
+          <div
+            class="h-100 bg-secondary position-relative rounded-3 overflow-hidden shadow-lg image__cover"
           >
-            Người FPT
-          </a>
+            <img
+              class="w-100 h-100 rounded position-absolute object-fit-cover"
+              :src="articlesCover[0].article_thumbnail"
+              :alt="articlesCover[0].article_title"
+            />
+            <div class="p-3 p-md-4 z-3 position-absolute bottom-0">
+              <h2>
+                <nuxt-link
+                  class="text-line-clamp-2 shadow-lg text-light text-decoration-none fw-bold text-hover"
+                  :to="`/${articlesCover[0].category.category_slug}/${articlesCover[0].article_slug}.html`"
+                >
+                  {{ articlesCover[0].article_title }}
+                </nuxt-link>
+              </h2>
+              <nuxt-link
+                class="shadow-lg text-light text-decoration-none fw-bold text-hover"
+                :to="`/${articlesCover[0].category.category_slug}`"
+              >
+                {{ articlesCover[0].category.category_name }}
+              </nuxt-link>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <ul class="p-0 mb-0">
+            <li
+              class="mb-4"
+              :class="{ 'border-bottom': index !== 3 }"
+              v-for="(article, index) in articlesCover.slice(1)"
+              :key="article.id"
+            >
+              <div>
+                <h3 class="h5">
+                  <nuxt-link
+                    class="text-line-clamp-2 text-dark text-decoration-none text-hover"
+                    :to="`/${article.category.category_slug}/${article.article_slug}.html`"
+                  >
+                    {{ article.article_title }}
+                  </nuxt-link>
+                </h3>
+                <nuxt-link
+                  class="d-block mb-3 text-muted text-decoration-none"
+                  :to="`/${article.category.category_slug}`"
+                >
+                  {{ article.category.category_name }}
+                </nuxt-link>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
-    </b-col>
-    <b-col cols="12" md="4">
-      <ul class="p-0 mb-0">
-        <li class="border-bottom mb-4">
-          <PostInfo
-            :post="{
-              title:
-                'Học sinh FPT Schools giành hàng loạt giải thưởng robotics',
-              categoryName: 'Người FPT',
-            }"
-          />
-        </li>
-      </ul>
-    </b-col>
-  </b-row>
+    </div>
+
+    <!-- Display on Mobile -->
+    <div class="d-block d-sm-none">
+      <div class="mb-4">
+        <div class="mb-4">
+          <div>
+            <nuxt-link
+              class="d-block ratio ratio-16x9 overflow-hidden mb-3 shadow-lg"
+              :to="`/${articlesCover[0].category.category_slug}/${articlesCover[0].article_slug}.html`"
+            >
+              <img
+                class="w-100 object-fit-cover"
+                :src="articlesCover[0].article_thumbnail"
+                :alt="articlesCover[0].article_title"
+              />
+            </nuxt-link>
+            <div class="container">
+              <div class="border-bottom">
+                <h3 class="h4">
+                  <nuxt-link
+                    class="text-line-clamp-2 text-dark text-decoration-none text-hover"
+                    :to="`/${articlesCover[0].category.category_slug}/${articlesCover[0].article_slug}.html`"
+                  >
+                    {{ articlesCover[0].article_title }}
+                  </nuxt-link>
+                </h3>
+                <p class="text-line-clamp-2">
+                  {{ articlesCover[0].article_description }}
+                </p>
+                <nuxt-link
+                  class="d-block mb-3 text-muted text-decoration-none"
+                  :to="`/${articlesCover[0].category.category_slug}`"
+                >
+                  {{ articlesCover[0].category.category_name }}
+                </nuxt-link>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ul class="mb-0 container">
+          <li
+            class="mb-4"
+            v-for="article in articlesCover.slice(1)"
+            :key="article.id"
+          >
+            <div class="border-bottom">
+              <div class="row">
+                <div class="col-5 pe-0">
+                  <nuxt-link
+                    class="d-block mb-3 ratio ratio-16x9 overflow-hidden rounded-3 shadow-lg"
+                    :to="`/${article.category.category_slug}/${article.article_slug}.html`"
+                  >
+                    <img
+                      class="w-100 object-fit-cover"
+                      :src="article.article_thumbnail"
+                      :alt="article.article_title"
+                    />
+                  </nuxt-link>
+                </div>
+                <div class="col-7">
+                  <h3 class="h5">
+                    <nuxt-link
+                      class="text-line-clamp-2 text-dark text-decoration-none text-hover"
+                      :to="`/${article.category.category_slug}/${article.article_slug}.html`"
+                    >
+                      {{ article.article_title }}
+                    </nuxt-link>
+                  </h3>
+                  <nuxt-link
+                    class="d-block mb-3 text-muted text-decoration-none"
+                    :to="`/${article.category.category_slug}`"
+                  >
+                    {{ article.category.category_name }}
+                  </nuxt-link>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import PostCover from "@/components/posts/PostCover.vue";
-import PostInfo from "@/components/posts/PostInfo.vue";
-
 export default {
-  components: {
-    PostCover,
-    PostInfo,
+  props: {
+    articlesCover: {
+      type: Array,
+      default: [],
+    },
   },
 };
 </script>

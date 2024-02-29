@@ -21,6 +21,9 @@ export const getters = {
     getArticlesNew(state) {
         return state.articlesNew;
     },
+    getArticlesCover(state) {
+        return state.articlesNew.slice(0, 5);
+    }
 };
 
 export const actions = {
