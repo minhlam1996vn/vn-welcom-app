@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <div>
     <!-- section-feature -->
     <section class="pt-sm-4">
       <SectionCover :articles-cover="articlesCover" />
@@ -33,7 +33,7 @@
       <div class="container">
         <SectionCategoryFirst :category-info="categoriesPopular[0]" />
       </div>
-      <div class="d-none d-sm-block container pb-4">
+      <div class="container pb-4">
         <div class="border-bottom"></div>
       </div>
     </section>
@@ -43,8 +43,29 @@
       <div class="container">
         <SectionCategorySecond :category-info="categoriesPopular[1]" />
       </div>
+      <div class="d-none d-sm-block container pb-4">
+        <div class="border-bottom"></div>
+      </div>
     </section>
-  </section>
+
+    <!-- Category 3 -->
+    <section>
+      <div class="container">
+        <SectionCategoryThird :category-info="categoriesPopular[2]" />
+      </div>
+      <div class="d-none d-sm-block container pb-4">
+        <div class="border-bottom"></div>
+      </div>
+    </section>
+
+    <!-- Category 4 -->
+    <section>
+      <div class="container">
+        <SectionCategoryFourth :category-info="categoriesPopular[3]" />
+      </div>
+      <div class="pb-4"></div>
+    </section>
+  </div>
 </template>
 
 <script>
@@ -56,6 +77,8 @@ import SectionColumn from "../components/section/SectionColumn.vue";
 import SectionBanner from "../components/section/SectionBanner.vue";
 import SectionCategoryFirst from "../components/section/SectionCategoryFirst.vue";
 import SectionCategorySecond from "../components/section/SectionCategorySecond.vue";
+import SectionCategoryThird from "../components/section/SectionCategoryThird.vue";
+import SectionCategoryFourth from "../components/section/SectionCategoryFourth.vue";
 
 export default {
   components: {
@@ -65,6 +88,8 @@ export default {
     SectionBanner,
     SectionCategoryFirst,
     SectionCategorySecond,
+    SectionCategoryThird,
+    SectionCategoryFourth,
   },
   computed: {
     ...mapGetters({
@@ -78,7 +103,6 @@ export default {
     await Promise.all([
       store.dispatch("category/getListCategoriesParent"),
       store.dispatch("category/getListCategoriesPopular"),
-      store.dispatch("article/getListArticlesPopular"),
       store.dispatch("article/getListArticlesNew"),
     ]);
   },
