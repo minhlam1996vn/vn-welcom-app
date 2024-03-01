@@ -78,7 +78,7 @@
         </ul>
       </div>
       <div class="col-12 col-md-8 mb-md-0 mb-4">
-        <div>
+        <div v-if="categoryInfo.articles[0]">
           <nuxt-link
             class="d-block ratio ratio-16x9 overflow-hidden mb-3 rounded-3 shadow-lg"
             :to="`/${categoryInfo.category_slug}/${categoryInfo.articles[0].article_slug}.html`"

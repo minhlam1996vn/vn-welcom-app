@@ -33,7 +33,10 @@
       </div>
     </div>
     <div class="row mb-4">
-      <div class="col-12 col-md mb-md-0 mb-4 d-none d-sm-block">
+      <div
+        v-if="categoryInfo.articles[0]"
+        class="col-12 col-md mb-md-0 mb-4 d-none d-sm-block"
+      >
         <div
           class="h-100 bg-secondary position-relative rounded-3 overflow-hidden shadow-lg"
         >
@@ -62,7 +65,7 @@
       </div>
       <div class="col-12 col-md mb-md-0 mb-4">
         <ul class="ps-0 mb-0">
-          <li class="mb-4">
+          <li v-if="categoryInfo.articles[1]" class="mb-4">
             <div class="border-bottom">
               <nuxt-link
                 class="d-block ratio ratio-16x9 overflow-hidden mb-3 rounded-3 shadow-lg"
@@ -90,7 +93,7 @@
               </nuxt-link>
             </div>
           </li>
-          <li class="mb-4">
+          <li v-if="categoryInfo.articles[2]" class="mb-4">
             <div class="row">
               <div class="col-6 col-md-4 pe-0 pe-md-2 mb-3">
                 <nuxt-link
@@ -113,9 +116,6 @@
                     {{ categoryInfo.articles[2].article_title }}
                   </nuxt-link>
                 </h3>
-                <!-- <p v-if="post.description" class="text-line-clamp-2">
-                  {{ post.description }}
-                </p> -->
                 <nuxt-link
                   class="d-block mb-3 text-muted text-decoration-none"
                   :to="`/${categoryInfo.category_slug}`"
@@ -128,7 +128,7 @@
               </div>
             </div>
           </li>
-          <li class="">
+          <li v-if="categoryInfo.articles[3]">
             <div class="row">
               <div class="col-6 col-md-4 pe-0 pe-md-2 mb-3">
                 <nuxt-link
@@ -167,7 +167,7 @@
       </div>
       <div class="col-12 col-md">
         <ul class="ps-0 mb-0">
-          <li class="mb-4">
+          <li v-if="categoryInfo.articles[4]" class="mb-4">
             <div class="border-bottom">
               <nuxt-link
                 class="d-block ratio ratio-16x9 overflow-hidden mb-3 rounded-3 shadow-lg"
@@ -195,17 +195,17 @@
               </nuxt-link>
             </div>
           </li>
-          <li class="mb-4">
+          <li v-if="categoryInfo.articles[5]" class="mb-4">
             <div class="row">
               <div class="col-6 col-md-4 pe-0 pe-md-2 mb-3">
                 <nuxt-link
                   class="d-block ratio ratio-16x9 overflow-hidden rounded-3 shadow-lg"
-                  :to="`/${categoryInfo.articles[2].article_slug}.html`"
+                  :to="`/${categoryInfo.articles[5].article_slug}.html`"
                 >
                   <img
                     class="w-100 object-fit-cover"
-                    :src="categoryInfo.articles[2].article_thumbnail"
-                    :alt="categoryInfo.articles[2].article_title"
+                    :src="categoryInfo.articles[5].article_thumbnail"
+                    :alt="categoryInfo.articles[5].article_title"
                   />
                 </nuxt-link>
               </div>
@@ -213,14 +213,11 @@
                 <h3 class="h5">
                   <nuxt-link
                     class="text-line-clamp-2 text-dark text-decoration-none text-hover"
-                    :to="`/${categoryInfo.articles[2].article_slug}.html`"
+                    :to="`/${categoryInfo.articles[5].article_slug}.html`"
                   >
-                    {{ categoryInfo.articles[2].article_title }}
+                    {{ categoryInfo.articles[5].article_title }}
                   </nuxt-link>
                 </h3>
-                <!-- <p v-if="post.description" class="text-line-clamp-2">
-                  {{ post.description }}
-                </p> -->
                 <nuxt-link
                   class="d-block mb-3 text-muted text-decoration-none"
                   :to="`/${categoryInfo.category_slug}`"
@@ -233,17 +230,17 @@
               </div>
             </div>
           </li>
-          <li class="">
+          <li v-if="categoryInfo.articles[6]">
             <div class="row">
               <div class="col-6 col-md-4 pe-0 pe-md-2 mb-3">
                 <nuxt-link
                   class="d-block ratio ratio-16x9 overflow-hidden rounded-3 shadow-lg"
-                  :to="`/${categoryInfo.articles[3].article_slug}.html`"
+                  :to="`/${categoryInfo.articles[6].article_slug}.html`"
                 >
                   <img
                     class="w-100 object-fit-cover"
-                    :src="categoryInfo.articles[3].article_thumbnail"
-                    :alt="categoryInfo.articles[3].article_title"
+                    :src="categoryInfo.articles[6].article_thumbnail"
+                    :alt="categoryInfo.articles[6].article_title"
                   />
                 </nuxt-link>
               </div>
@@ -251,9 +248,9 @@
                 <h3 class="h5">
                   <nuxt-link
                     class="text-line-clamp-2 text-dark text-decoration-none text-hover"
-                    :to="`/${categoryInfo.articles[3].article_slug}.html`"
+                    :to="`/${categoryInfo.articles[6].article_slug}.html`"
                   >
-                    {{ categoryInfo.articles[3].article_title }}
+                    {{ categoryInfo.articles[6].article_title }}
                   </nuxt-link>
                 </h3>
                 <nuxt-link

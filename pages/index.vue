@@ -1,16 +1,19 @@
 <template>
   <div>
     <!-- section-feature -->
-    <section class="pt-sm-4">
+    <section v-if="articlesCover.length !== 0" class="pt-sm-4 pb-sm-4">
       <SectionCover :articles-cover="articlesCover" />
       <div class="container">
-        <SectionThreeRow :articles-three="articlesThree" />
+        <SectionThreeRow
+          v-if="articlesThree.length !== 0"
+          :articles-three="articlesThree"
+        />
         <div class="d-none d-sm-block border-bottom"></div>
       </div>
     </section>
 
     <!-- section article -->
-    <section>
+    <section v-if="articlesNew.length !== 0">
       <div class="container py-4">
         <div class="row">
           <div class="col-12 col-md-9">
@@ -29,7 +32,9 @@
     </section>
 
     <!-- Category 1 -->
-    <section>
+    <section
+      v-if="categoriesPopular[0] && categoriesPopular[0].articles.length >= 3"
+    >
       <div class="container">
         <SectionCategoryFirst :category-info="categoriesPopular[0]" />
       </div>
@@ -39,7 +44,9 @@
     </section>
 
     <!-- Category 2 -->
-    <section>
+    <section
+      v-if="categoriesPopular[1] && categoriesPopular[1].articles.length >= 7"
+    >
       <div class="container">
         <SectionCategorySecond :category-info="categoriesPopular[1]" />
       </div>
@@ -49,7 +56,9 @@
     </section>
 
     <!-- Category 3 -->
-    <section>
+    <section
+      v-if="categoriesPopular[2] && categoriesPopular[2].articles.length >= 3"
+    >
       <div class="container">
         <SectionCategoryThird :category-info="categoriesPopular[2]" />
       </div>
@@ -59,7 +68,9 @@
     </section>
 
     <!-- Category 4 -->
-    <section>
+    <section
+      v-if="categoriesPopular[3] && categoriesPopular[3].articles.length >= 3"
+    >
       <div class="container">
         <SectionCategoryFourth :category-info="categoriesPopular[3]" />
       </div>
