@@ -14,7 +14,7 @@
 
     <!-- section article -->
     <section v-if="articlesNew.length !== 0">
-      <div class="container py-4">
+      <div class="container py-4 pt-sm-0">
         <div class="row">
           <div class="col-12 col-md-9">
             <SectionColumn :articles-new="articlesNew" />
