@@ -2,7 +2,8 @@
   <div id="root">
     <HeaderComponent />
     <NavbarComponent />
-    <main class="min-vh-100">
+    <!-- class="min-vh-100" -->
+    <main>
       <Nuxt />
     </main>
     <FooterComponent />

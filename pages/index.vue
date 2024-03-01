@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="min-vh-100">
     <!-- section-feature -->
     <section v-if="articlesCover.length !== 0" class="pt-sm-4 pb-sm-4">
       <SectionCover :articles-cover="articlesCover" />
