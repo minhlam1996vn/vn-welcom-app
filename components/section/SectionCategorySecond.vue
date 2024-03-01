@@ -48,14 +48,14 @@
           <div class="p-3 p-md-4 z-3 position-absolute bottom-0">
             <h2>
               <nuxt-link
-                class="text-line-clamp-2 shadow-lg text-light text-decoration-none fw-bold text-hover"
+                class="text-line-clamp-2 text-light text-decoration-none fw-bold text-hover"
                 :to="`/${categoryInfo.category_slug}/${categoryInfo.articles[0].article_slug}.html`"
               >
                 {{ categoryInfo.articles[0].article_title }}
               </nuxt-link>
             </h2>
             <nuxt-link
-              class="shadow-lg text-light text-decoration-none fw-bold"
+              class="text-light text-decoration-none fw-bold"
               :to="`/${categoryInfo.category_slug}`"
             >
               {{ categoryInfo.category_name }}
