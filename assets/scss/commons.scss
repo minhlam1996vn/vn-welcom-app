@@ -69,3 +69,12 @@ body {
   border-radius: 30px;
   background-color: rgba(0, 0, 0, 0.2);
 }
+
+// Custom sidebar menu
+#sidebar-menu {
+  width: 100%;
+}
+
+#sidebar-menu .b-sidebar-body {
+  background-color: #f0f0f0;
+}
