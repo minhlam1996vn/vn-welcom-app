@@ -18,7 +18,7 @@
             >
               <nuxt-link
                 class="py-1 px-3 text-white text-decoration-none custom__fw-5"
-                :to="category.category_slug"
+                :to="`/${category.category_slug}`"
               >
                 {{ category.category_name }}
               </nuxt-link>

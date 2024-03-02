@@ -1,11 +1,11 @@
 <template>
-  <div class="bg-light">
+  <div style="background-color: #f0f0f0">
     <!-- PC -->
     <div class="d-none d-sm-block">
       <div class="container py-sm-4">
         <div class="row">
           <div class="col-12 col-md-9">
-            <div class="card rounded-0 border-0 shadow-sm px-4">
+            <div class="card rounded-0 border-0 px-4">
               <div class="card-header pt-3 pb-0 border-0 bg-white">
                 <div class="card-title mb-0">
                   <nav aria-label="breadcrumb">
@@ -56,7 +56,15 @@
           </div>
           <div class="d-none d-sm-block col-12 col-md-3 mt-md-0 mt-4">
             <aside class="position-sticky z-1 custom__top-5">
-              <SectionBanner />
+              <div class="banner__ads rounded-3 overflow-hidden mb-4">
+                <a href="#!">
+                  <img
+                    class="w-100"
+                    src="https://images.unsplash.com/photo-1682687221213-56e250b36fdd"
+                    alt="banner-02"
+                  />
+                </a>
+              </div>
             </aside>
           </div>
         </div>

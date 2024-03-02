@@ -1,16 +1,19 @@
 <template>
-  <header class="bg-light">
+  <header class="bg-white">
     <div class="container">
       <div
         class="d-flex flex-row align-items-center justify-content-between py-3"
       >
         <h1 class="mb-0 d-none d-md-block header__start">
-          <nuxt-link class="text-decoration-none fw-bold text-muted" to="/">
-            Vnews
+          <nuxt-link
+            class="h2 fw-bold text-decoration-none text-muted"
+            to="/"
+          >
+            <span>VN Welcome</span>
           </nuxt-link>
         </h1>
         <div class="text-center header__center">
-          <h1 class="h3 text-muted fw-bold">VIỆT NAM TƯƠI ĐẸP</h1>
+          <h1 class="h4 text-muted fw-bold">VIỆT NAM TƯƠI ĐẸP</h1>
           <p class="mb-0 text-muted">
             Mọi thứ bạn muốn biết về Việt Nam và Hơn thế nữa….
           </p>
@@ -46,7 +49,7 @@ export default {
 .header {
   &__start,
   &__end {
-    width: 192px;
+    width: 200px;
   }
 }
 .search__icon:hover {
