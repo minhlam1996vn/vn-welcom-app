@@ -1,14 +1,12 @@
 <template>
   <header class="bg-white">
-    <div class="container">
+    <!-- PC -->
+    <div class="container d-none d-sm-block">
       <div
         class="d-flex flex-row align-items-center justify-content-between py-3"
       >
         <h1 class="mb-0 d-none d-md-block header__start">
-          <nuxt-link
-            class="h2 fw-bold text-decoration-none text-muted"
-            to="/"
-          >
+          <nuxt-link class="h2 fw-bold text-decoration-none text-muted" to="/">
             <span>VN Welcome</span>
           </nuxt-link>
         </h1>
@@ -23,6 +21,27 @@
             <font-awesome-icon :icon="['far', 'calendar']" />
             <span class="ps-1">Thứ 6, 13/10/2023</span>
           </span>
+          <button
+            class="px-0 border-0 bg-transparent text-muted"
+            @click="handleSearch"
+          >
+            <font-awesome-icon :icon="['fas', 'magnifying-glass']" />
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile -->
+    <div class="container d-block d-sm-none">
+      <div
+        class="d-flex flex-row align-items-center justify-content-between py-3"
+      >
+        <h1 class="mb-0">
+          <nuxt-link class="h2 fw-bold text-decoration-none text-muted" to="/">
+            <span>VN Welcome</span>
+          </nuxt-link>
+        </h1>
+        <div class="text-muted">
           <button
             class="px-0 border-0 bg-transparent text-muted"
             @click="handleSearch"
