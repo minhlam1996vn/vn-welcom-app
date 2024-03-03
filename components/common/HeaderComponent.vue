@@ -65,7 +65,13 @@
     </div>
 
     <!-- Sidebar -->
-    <b-sidebar id="sidebar-menu" no-header shadow>
+    <b-sidebar
+      id="sidebar-menu"
+      @shown="handleSidebarShown"
+      @hidden="handleSidebarHidden"
+      no-header
+      shadow
+    >
       <template #default="{ hide }">
         <div class="container py-3 bg-white">
           <div class="d-flex justify-content-between align-items-center">
@@ -128,6 +134,12 @@ export default {
   methods: {
     handleSearch: () => {
       alert("Chức năng tìm kiếm đang được phát triển. Vui lòng quay lại sau!");
+    },
+    handleSidebarShown() {
+      document.body.style.overflow = "hidden";
+    },
+    handleSidebarHidden() {
+      document.body.style.overflow = "";
     },
   },
 };
