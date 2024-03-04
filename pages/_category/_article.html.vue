@@ -121,7 +121,6 @@ import SectionBanner from "../../components/section/SectionBanner.vue";
 
 export default {
   validate({ params, query }) {
-    console.log(params);
     // if (!params.slug || !params.slug.trim()) {
     //   return false;
     // }
