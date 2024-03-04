@@ -3,8 +3,11 @@
     <div class="mb-4">
       <div class="d-flex gap-4 align-items-center">
         <h2 class="fw-bold mb-0 text-nowrap">
-          <font-awesome-icon :icon="['fas', 'box']" />
-          <a href="#!" class="text-decoration-none text-dark">
+          <font-awesome-icon
+            :icon="['fas', 'pager']"
+            class="text-success me-1"
+          />
+          <a href="#!" class="text-decoration-none text-dark text-hover">
             {{ categoryInfo.category_name }}
           </a>
         </h2>
@@ -13,20 +16,17 @@
           class="d-none d-sm-block overflow-x-auto overflow-y-hidden"
         >
           <ul class="d-flex gap-3 align-items-center h5 ps-0 mb-0 custom__fw-5">
-            <li class="text-nowrap">
-              <a href="#!" class="text-decoration-none text-muted">
-                Made by FPT
-              </a>
-            </li>
-            <li class="text-nowrap">
-              <a href="#!" class="text-decoration-none text-muted">
-                Chuyển đổi số
-              </a>
-            </li>
-            <li class="text-nowrap">
-              <a href="#!" class="text-decoration-none text-muted">
-                Công nghệ
-              </a>
+            <li
+              class="text-nowrap"
+              v-for="category in categoryInfo.categoriesChild"
+              :key="category.id"
+            >
+              <nuxt-link
+                class="text-decoration-none text-muted text-hover"
+                :to="`/${categoryInfo.articles[0].category.category_slug}`"
+              >
+                {{ categoryInfo.articles[0].category.category_name }}
+              </nuxt-link>
             </li>
           </ul>
         </nav>
@@ -48,14 +48,14 @@
           <div class="p-3 p-md-4 z-3 position-absolute bottom-0">
             <h2>
               <nuxt-link
-                class="text-line-clamp-2 text-light text-decoration-none fw-bold text-hover"
-                :to="`/${categoryInfo.category_slug}/${categoryInfo.articles[0].article_slug}.html`"
+                class="text-line-clamp-2 text-light text-decoration-none fw-bold title-hover"
+                :to="`/${categoryInfo.articles[0].category.category_slug}/${categoryInfo.articles[0].article_slug}.html`"
               >
                 {{ categoryInfo.articles[0].article_title }}
               </nuxt-link>
             </h2>
             <nuxt-link
-              class="text-light text-decoration-none fw-bold"
+              class="text-light text-decoration-none fw-bold text-hover"
               :to="`/${categoryInfo.category_slug}`"
             >
               {{ categoryInfo.category_name }}
@@ -69,7 +69,7 @@
             <div class="border-bottom">
               <nuxt-link
                 class="d-block ratio ratio-16x9 overflow-hidden mb-3 rounded-3 shadow-lg"
-                :to="`/${categoryInfo.articles[1].article_slug}.html`"
+                :to="`/${categoryInfo.articles[1].category.category_slug}/${categoryInfo.articles[1].article_slug}.html`"
               >
                 <img
                   class="w-100 object-fit-cover"
@@ -80,16 +80,16 @@
               <h3 class="h5">
                 <nuxt-link
                   class="text-line-clamp-2 text-dark text-decoration-none text-hover"
-                  :to="`/${categoryInfo.articles[1].article_slug}.html`"
+                  :to="`/${categoryInfo.articles[1].category.category_slug}/${categoryInfo.articles[1].article_slug}.html`"
                 >
                   {{ categoryInfo.articles[1].article_title }}
                 </nuxt-link>
               </h3>
               <nuxt-link
-                class="d-block mb-3 text-muted text-decoration-none"
-                :to="`/${categoryInfo.category_slug}`"
+                class="d-block mb-3 text-muted text-decoration-none text-hover"
+                :to="`/${categoryInfo.articles[1].category.category_slug}`"
               >
-                {{ categoryInfo.category_name }}
+                {{ categoryInfo.articles[1].category.category_name }}
               </nuxt-link>
             </div>
           </li>
@@ -98,7 +98,7 @@
               <div class="col-6 col-md-4 pe-0 pe-md-2 mb-3">
                 <nuxt-link
                   class="d-block ratio ratio-16x9 overflow-hidden rounded-3 shadow-lg"
-                  :to="`/${categoryInfo.articles[2].article_slug}.html`"
+                  :to="`/${categoryInfo.articles[2].category.category_slug}/${categoryInfo.articles[1].article_slug}.html`"
                 >
                   <img
                     class="w-100 object-fit-cover"
@@ -111,16 +111,16 @@
                 <h3 class="h5">
                   <nuxt-link
                     class="text-line-clamp-2 text-dark text-decoration-none text-hover"
-                    :to="`/${categoryInfo.articles[2].article_slug}.html`"
+                    :to="`/${categoryInfo.articles[2].category.category_slug}/${categoryInfo.articles[2].article_slug}.html`"
                   >
                     {{ categoryInfo.articles[2].article_title }}
                   </nuxt-link>
                 </h3>
                 <nuxt-link
-                  class="d-block mb-3 text-muted text-decoration-none"
-                  :to="`/${categoryInfo.category_slug}`"
+                  class="d-block mb-3 text-muted text-decoration-none text-hover"
+                  :to="`/${categoryInfo.articles[2].category.category_slug}`"
                 >
-                  {{ categoryInfo.category_name }}
+                  {{ categoryInfo.articles[2].category.category_name }}
                 </nuxt-link>
               </div>
               <div class="col-12">
@@ -133,7 +133,7 @@
               <div class="col-6 col-md-4 pe-0 pe-md-2 mb-3">
                 <nuxt-link
                   class="d-block ratio ratio-16x9 overflow-hidden rounded-3 shadow-lg"
-                  :to="`/${categoryInfo.articles[3].article_slug}.html`"
+                  :to="`/${categoryInfo.articles[3].category.category_slug}/${categoryInfo.articles[3].article_slug}.html`"
                 >
                   <img
                     class="w-100 object-fit-cover"
@@ -146,16 +146,16 @@
                 <h3 class="h5">
                   <nuxt-link
                     class="text-line-clamp-2 text-dark text-decoration-none text-hover"
-                    :to="`/${categoryInfo.articles[3].article_slug}.html`"
+                    :to="`/${categoryInfo.articles[3].category.category_slug}/${categoryInfo.articles[3].article_slug}.html`"
                   >
                     {{ categoryInfo.articles[3].article_title }}
                   </nuxt-link>
                 </h3>
                 <nuxt-link
-                  class="d-block mb-3 text-muted text-decoration-none"
-                  :to="`/${categoryInfo.category_slug}`"
+                  class="d-block mb-3 text-muted text-decoration-none text-hover"
+                  :to="`/${categoryInfo.articles[3].category.category_slug}`"
                 >
-                  {{ categoryInfo.category_name }}
+                  {{ categoryInfo.articles[3].category.category_name }}
                 </nuxt-link>
               </div>
               <div class="d-block d-sm-none col-12">
@@ -171,7 +171,7 @@
             <div class="border-bottom">
               <nuxt-link
                 class="d-block ratio ratio-16x9 overflow-hidden mb-3 rounded-3 shadow-lg"
-                :to="`/${categoryInfo.articles[4].article_slug}.html`"
+                :to="`/${categoryInfo.articles[4].category.category_slug}/${categoryInfo.articles[4].article_slug}.html`"
               >
                 <img
                   class="w-100 object-fit-cover"
@@ -182,16 +182,16 @@
               <h3 class="h5">
                 <nuxt-link
                   class="text-line-clamp-2 text-dark text-decoration-none text-hover"
-                  :to="`/${categoryInfo.articles[4].article_slug}.html`"
+                  :to="`/${categoryInfo.articles[4].category.category_slug}/${categoryInfo.articles[4].article_slug}.html`"
                 >
                   {{ categoryInfo.articles[4].article_title }}
                 </nuxt-link>
               </h3>
               <nuxt-link
-                class="d-block mb-3 text-muted text-decoration-none"
-                :to="`/${categoryInfo.category_slug}`"
+                class="d-block mb-3 text-muted text-decoration-none text-hover"
+                :to="`/${categoryInfo.articles[4].category.category_slug}`"
               >
-                {{ categoryInfo.category_name }}
+                {{ categoryInfo.articles[4].category.category_name }}
               </nuxt-link>
             </div>
           </li>
@@ -200,7 +200,7 @@
               <div class="col-6 col-md-4 pe-0 pe-md-2 mb-3">
                 <nuxt-link
                   class="d-block ratio ratio-16x9 overflow-hidden rounded-3 shadow-lg"
-                  :to="`/${categoryInfo.articles[5].article_slug}.html`"
+                  :to="`/${categoryInfo.articles[5].category.category_slug}/${categoryInfo.articles[5].article_slug}.html`"
                 >
                   <img
                     class="w-100 object-fit-cover"
@@ -213,16 +213,16 @@
                 <h3 class="h5">
                   <nuxt-link
                     class="text-line-clamp-2 text-dark text-decoration-none text-hover"
-                    :to="`/${categoryInfo.articles[5].article_slug}.html`"
+                    :to="`/${categoryInfo.articles[5].category.category_slug}/${categoryInfo.articles[5].article_slug}.html`"
                   >
                     {{ categoryInfo.articles[5].article_title }}
                   </nuxt-link>
                 </h3>
                 <nuxt-link
-                  class="d-block mb-3 text-muted text-decoration-none"
-                  :to="`/${categoryInfo.category_slug}`"
+                  class="d-block mb-3 text-muted text-decoration-none text-hover"
+                  :to="`/${categoryInfo.articles[5].category.category_slug}`"
                 >
-                  {{ categoryInfo.category_name }}
+                  {{ categoryInfo.articles[5].category.category_name }}
                 </nuxt-link>
               </div>
               <div class="col-12">
@@ -235,7 +235,7 @@
               <div class="col-6 col-md-4 pe-0 pe-md-2 mb-3">
                 <nuxt-link
                   class="d-block ratio ratio-16x9 overflow-hidden rounded-3 shadow-lg"
-                  :to="`/${categoryInfo.articles[6].article_slug}.html`"
+                  :to="`/${categoryInfo.articles[6].category.category_slug}/${categoryInfo.articles[6].article_slug}.html`"
                 >
                   <img
                     class="w-100 object-fit-cover"
@@ -248,16 +248,16 @@
                 <h3 class="h5">
                   <nuxt-link
                     class="text-line-clamp-2 text-dark text-decoration-none text-hover"
-                    :to="`/${categoryInfo.articles[6].article_slug}.html`"
+                    :to="`/${categoryInfo.articles[6].category.category_slug}/${categoryInfo.articles[6].article_slug}.html`"
                   >
                     {{ categoryInfo.articles[6].article_title }}
                   </nuxt-link>
                 </h3>
                 <nuxt-link
-                  class="d-block mb-3 text-muted text-decoration-none"
-                  :to="`/${categoryInfo.category_slug}`"
+                  class="d-block mb-3 text-muted text-decoration-none text-hover"
+                  :to="`/${categoryInfo.articles[6].category.category_slug}`"
                 >
-                  {{ categoryInfo.category_name }}
+                  {{ categoryInfo.articles[6].category.category_name }}
                 </nuxt-link>
               </div>
               <div class="d-block d-sm-none col-12">

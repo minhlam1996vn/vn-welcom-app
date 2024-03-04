@@ -3,8 +3,11 @@
     <div class="mb-4">
       <div class="d-flex gap-4 align-items-center">
         <h2 class="fw-bold mb-0 text-nowrap">
-          <font-awesome-icon :icon="['fas', 'box']" />
-          <a href="#!" class="text-decoration-none text-dark">
+          <font-awesome-icon
+            :icon="['fas', 'pager']"
+            class="text-success me-1"
+          />
+          <a href="#!" class="text-decoration-none text-dark text-hover">
             {{ categoryInfo.category_name }}
           </a>
         </h2>
@@ -13,20 +16,17 @@
           class="d-none d-sm-block overflow-x-auto overflow-y-hidden"
         >
           <ul class="d-flex gap-3 align-items-center h5 ps-0 mb-0 custom__fw-5">
-            <li class="text-nowrap">
-              <a href="#!" class="text-decoration-none text-muted">
-                Made by FPT
-              </a>
-            </li>
-            <li class="text-nowrap">
-              <a href="#!" class="text-decoration-none text-muted">
-                Chuyển đổi số
-              </a>
-            </li>
-            <li class="text-nowrap">
-              <a href="#!" class="text-decoration-none text-muted">
-                Công nghệ
-              </a>
+            <li
+              class="text-nowrap"
+              v-for="category in categoryInfo.categoriesChild"
+              :key="category.id"
+            >
+              <nuxt-link
+                class="text-decoration-none text-muted text-hover"
+                :to="`/${categoryInfo.articles[0].category.category_slug}`"
+              >
+                {{ categoryInfo.articles[0].category.category_name }}
+              </nuxt-link>
             </li>
           </ul>
         </nav>

@@ -15,14 +15,14 @@
             <div class="p-3 p-md-4 z-3 position-absolute bottom-0">
               <h2>
                 <nuxt-link
-                  class="text-line-clamp-2 text-light text-decoration-none fw-bold text-hover"
+                  class="text-line-clamp-2 text-light text-decoration-none fw-bold title-hover"
                   :to="`/${articlesCover[0].category.category_slug}/${articlesCover[0].article_slug}.html`"
                 >
                   {{ articlesCover[0].article_title }}
                 </nuxt-link>
               </h2>
               <nuxt-link
-                class="text-light text-decoration-none fw-bold"
+                class="text-light text-decoration-none fw-bold text-hover"
                 :to="`/${articlesCover[0].category.category_slug}`"
               >
                 {{ articlesCover[0].category.category_name }}
@@ -48,7 +48,7 @@
                   </nuxt-link>
                 </h3>
                 <nuxt-link
-                  class="d-block mb-3 text-muted text-decoration-none"
+                  class="d-block mb-3 text-muted text-decoration-none text-hover"
                   :to="`/${article.category.category_slug}`"
                 >
                   {{ article.category.category_name }}

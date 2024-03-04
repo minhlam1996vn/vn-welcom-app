@@ -110,7 +110,7 @@ export default {
       categoriesPopular: "category/getCategoriesPopular",
     }),
   },
-  async asyncData({ params, store }) {
+  async asyncData({ store }) {
     await Promise.all([
       store.dispatch("category/getListCategoriesParent"),
       store.dispatch("category/getListCategoriesPopular"),

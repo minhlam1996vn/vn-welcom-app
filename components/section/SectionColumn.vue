@@ -35,7 +35,7 @@
             {{ article.article_description }}
           </p>
           <nuxt-link
-            class="d-block text-muted text-decoration-none"
+            class="d-block text-muted text-decoration-none text-hover"
             :to="`/${article.category.category_slug}`"
           >
             {{ article.category.category_name }}

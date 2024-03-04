@@ -45,7 +45,13 @@ body {
 
 // Global class
 .text-hover:hover {
-  color: $success !important;
+  color: $accent !important;
+  transition: color 0.3s ease;
+}
+
+.title-hover:hover {
+  color: #DADADA !important;
+  transition: color 0.3s ease;
 }
 
 .bg-custom-primary {
