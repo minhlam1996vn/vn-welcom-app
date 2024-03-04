@@ -5,6 +5,12 @@ body {
   font-family: $body-font-family;
 }
 
+// custom scroll
+html,
+body {
+  scroll-behavior: auto !important;
+}
+
 /*
   1rem <=> 16 px
 */
