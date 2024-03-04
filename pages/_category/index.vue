@@ -1,20 +1,40 @@
 <template>
   <div>
-    <h1>Danh mục bài viết</h1>
+    <section class="pt-4">
+      <div class="container">
+        <SectionArticleByCategory
+          :articles="articlesByCategory.articles"
+          :category="categoryDetail"
+        />
+      </div>
+      <div class="container pb-4">
+        <div class="border-bottom"></div>
+      </div>
+    </section>
+
+    <section v-if="articlesByCategory.articles.length >= 4">
+      <div class="container py-4 pt-sm-0">
+        <div class="row">
+          <div class="col-12 col-md-9">
+            <SectionColumn :articles-new="articlesByCategory.articles" />
+          </div>
+          <div class="d-none d-sm-block col-12 col-md-3 mt-md-0 mt-4">
+            <aside class="position-sticky z-1 custom__top-5">
+              <SectionBanner />
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 
-import SectionCover from "../../components/section/SectionCover.vue";
-import SectionThreeRow from "../../components/section/SectionThreeRow.vue";
 import SectionColumn from "../../components/section/SectionColumn.vue";
 import SectionBanner from "../../components/section/SectionBanner.vue";
-import SectionCategoryFirst from "../../components/section/SectionCategoryFirst.vue";
-import SectionCategorySecond from "../../components/section/SectionCategorySecond.vue";
-import SectionCategoryThird from "../../components/section/SectionCategoryThird.vue";
-import SectionCategoryFourth from "../../components/section/SectionCategoryFourth.vue";
+import SectionArticleByCategory from "../../components/section/SectionArticleByCategory.vue";
 
 export default {
   validate({ params, query }) {
@@ -25,29 +45,21 @@ export default {
     return true;
   },
   components: {
-    SectionCover,
-    SectionThreeRow,
+    SectionArticleByCategory,
     SectionColumn,
     SectionBanner,
-    SectionCategoryFirst,
-    SectionCategorySecond,
-    SectionCategoryThird,
-    SectionCategoryFourth,
   },
   computed: {
     ...mapGetters({
-      articlesCover: "article/getArticlesCover",
-      articlesThree: "article/getArticlesThree",
-      articlesNew: "article/getArticlesNew",
-      categoriesPopular: "category/getCategoriesPopular",
+      articlesByCategory: "article/getArticlesByCategory",
+      categoryDetail: "category/getCategoryDetail",
     }),
   },
   async asyncData({ params, store }) {
-    // await Promise.all([
-    //   store.dispatch("category/getListCategoriesParent"),
-    //   store.dispatch("category/getListCategoriesPopular"),
-    //   store.dispatch("article/getListArticlesNew"),
-    // ]);
+    await Promise.all([
+      store.dispatch("article/getListArticlesByCategory", params.category),
+      store.dispatch("category/getCategoryDetail", params.category),
+    ]);
   },
 };
 </script>

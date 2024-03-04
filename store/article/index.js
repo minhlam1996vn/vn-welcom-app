@@ -3,6 +3,7 @@ export const state = () => {
         articlesPopular: [],
         articlesNew: [],
         articlesDetail: {},
+        articlesByCategory: {},
     };
 };
 
@@ -15,6 +16,9 @@ export const mutations = {
     },
     SET_ARTICLE_DETAIL(state, data) {
         state.articlesDetail = data;
+    },
+    SET_ARTICLES_BY_CATEGORY(state, data) {
+        state.articlesByCategory = data;
     }
 };
 
@@ -34,6 +38,9 @@ export const getters = {
     getArticleDetail(state) {
         return state.articlesDetail;
     },
+    getArticlesByCategory(state) {
+        return state.articlesByCategory;
+    }
 };
 
 export const actions = {
@@ -50,5 +57,10 @@ export const actions = {
     async getArticleDetail({ commit }, articleSlug) {
         const { data } = await this.$axios.get(`/article/detail/${articleSlug}`);
         commit("SET_ARTICLE_DETAIL", data);
+    },
+
+    async getListArticlesByCategory({ commit }, categorySlug) {
+        const { data } = await this.$axios.get(`/article/articles-by-category/${categorySlug}`);
+        commit("SET_ARTICLES_BY_CATEGORY", data);
     }
 };
