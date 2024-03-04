@@ -81,7 +81,7 @@
               <div class="col-4">
                 <img
                   class="w-100"
-                  src="https://images.unsplash.com/photo-1708432683889-c3133790465f"
+                  src="https://placehold.jp/1280x720.png"
                   alt=""
                 />
               </div>
