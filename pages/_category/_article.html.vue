@@ -56,15 +56,7 @@
           </div>
           <div class="d-none d-sm-block col-12 col-md-3 mt-md-0 mt-4">
             <aside class="position-sticky z-1 custom__top-5">
-              <div class="banner__ads rounded-3 overflow-hidden mb-4">
-                <a href="#!">
-                  <img
-                    class="w-100"
-                    src="https://images.unsplash.com/photo-1682687221213-56e250b36fdd"
-                    alt="banner-02"
-                  />
-                </a>
-              </div>
+              <SectionBanner />
             </aside>
           </div>
         </div>
@@ -125,6 +117,8 @@
 <script>
 import { mapGetters } from "vuex";
 
+import SectionBanner from "../../components/section/SectionBanner.vue";
+
 export default {
   validate({ params, query }) {
     console.log(params);
@@ -132,6 +126,9 @@ export default {
     //   return false;
     // }
     return true;
+  },
+  components: {
+    SectionBanner,
   },
   computed: {
     ...mapGetters({
