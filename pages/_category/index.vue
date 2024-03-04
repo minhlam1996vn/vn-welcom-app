@@ -76,7 +76,6 @@ import SectionArticleByCategoryColumn from "../../components/section/SectionArti
 
 export default {
   validate({ params, query }) {
-    console.log(params);
     // if (!params.slug || !params.slug.trim()) {
     //   return false;
     // }
