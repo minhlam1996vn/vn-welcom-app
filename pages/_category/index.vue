@@ -1,19 +1,19 @@
 <template>
   <div>
-    <section class="pt-4">
-      <div class="container">
-        <SectionArticleByCategory
-          :articles="articlesByCategory.articles"
-          :category="categoryDetail"
-        />
-      </div>
+    <section class="pt-sm-4 pt-3">
+      <!-- <div class="container"> -->
+      <SectionArticleByCategory
+        :articles="articlesByCategory.articles"
+        :category="categoryDetail"
+      />
+      <!-- </div> -->
       <div class="container pb-4">
         <div class="border-bottom"></div>
       </div>
     </section>
 
     <section v-if="articlesByCategory.articles.length >= 4">
-      <div class="container py-4 pt-sm-0">
+      <div class="container">
         <div class="row">
           <div class="col-12 col-md-9">
             <SectionColumn :articles-new="articlesByCategory.articles" />
@@ -57,6 +57,7 @@ export default {
   },
   async asyncData({ params, store }) {
     await Promise.all([
+      store.dispatch("category/getListCategoriesParent"),
       store.dispatch("article/getListArticlesByCategory", params.category),
       store.dispatch("category/getCategoryDetail", params.category),
     ]);
