@@ -74,5 +74,9 @@ export default {
     babel: {
       compact: true,
     },
+  },
+
+  server: {
+    host: '127.0.0.1' // default: localhost
   }
 }
